@@ -15,6 +15,10 @@ public class ContaPoupanca extends Conta {
             throw new IllegalArgumentException("Conta poupança não pode ser para pessoa jurídica");
     }
 
+    this.aniversarioConta = LocalDate.now();
+    this.rendimento = new BigDecimal(0);
+    
+
     
     
 }
