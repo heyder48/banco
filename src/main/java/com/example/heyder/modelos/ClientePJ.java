@@ -1,6 +1,9 @@
 package com.example.heyder.modelos;
 
-
+/**
+ * A classe ClientePJ é uma representação do cliente pessoa juridica.
+ * @author heyder
+ */
 
 public class ClientePJ extends Cliente {
 
@@ -8,6 +11,19 @@ public class ClientePJ extends Cliente {
     private String razaoSocial;
     private String nomeFantasia;
     private Titular titular;
+
+    /**
+     * Construtor da classe ClientePJ
+     * Não permite tipo de pessoa inválido
+     * @param nomeFantasia
+     * @param razaoSocial
+     * @param cnpj
+     * @param email
+     * @param endereco
+     * @param tipoDePessoa
+     * @param titular
+     */
+     
 
     public ClientePJ(Email email, TipoDePessoa tipoDePessoa,
             Endereco endereco, CNPJ cnpj, String razaoSocial, String nomeFantasia, Titular titular) {
@@ -24,7 +40,11 @@ public class ClientePJ extends Cliente {
 
     }
     
-
+    /**
+     * Método que adiciona um telefone a lista de telefones do cliente.
+     * @param telefone
+     */
+     
     @Override
     public void addTelefone(Telefone telefone) {
         telefones.add(telefone);

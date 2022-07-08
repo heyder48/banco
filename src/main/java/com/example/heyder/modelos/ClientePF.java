@@ -1,14 +1,28 @@
 package com.example.heyder.modelos;
 
 
-
+/**
+ * Classe que representa um Cliente Pessoa Física
+ * @author Heyder
+ * 
+ */
 public class ClientePF extends Cliente {
 
     private CPF cpf;
     private String nome;
     
 
-    
+    /**
+     * Construtor da classe ClientePF
+     * Não permite tipo de pessoa inválido
+     * @param nome
+     * @param cpf
+     * @param email
+     * @param endereco
+     * @param tipoDePessoa
+     * 
+     */
+     
 
     public ClientePF(String nome, CPF cpf, Email email,
             TipoDePessoa tipoDePessoa, Endereco endereco) {
@@ -25,6 +39,10 @@ public class ClientePF extends Cliente {
         System.out.println("Cliente cadastrado com sucesso!");
     }
 
+    /**
+     * Método que adiciona um telefone a lista de telefones do cliente limitanto a quantidade de telefones a 3.
+     * @param telefone
+     */
     @Override
     public void addTelefone(Telefone telefone) {
         if(telefones.size() >= 3) {

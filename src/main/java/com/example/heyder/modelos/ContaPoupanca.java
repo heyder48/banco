@@ -4,10 +4,33 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 
+/**
+ * Classe que representa uma conta poupanca
+ * Herda de Conta
+ * @author Heyder
+ *
+ */
 public class ContaPoupanca extends Conta {
 
-    private BigDecimal rendimento;
+    /**
+     * Atributo taxaRendimento representa a taxa de rendimento da conta
+     *
+     */
+    private final BigDecimal taxaRendimento = new BigDecimal("0.5");
+
+    /**
+     * Atributo aniversarioConta representa o aniversario da conta
+     *
+     */
     private LocalDate aniversarioConta;
+
+    /**
+     * Construtor da classe ContaPoupanca
+     * @param numero
+     * @param agencia
+     * @param cliente
+     * 
+     */
 
     public ContaPoupanca(String numero, String agencia, Cliente cliente) {
         super(numero, agencia, cliente);
@@ -16,13 +39,19 @@ public class ContaPoupanca extends Conta {
         }
 
     this.aniversarioConta = LocalDate.now();
-    this.rendimento = new BigDecimal(0);
+    
     super.tipo = TipoDeConta.POUPANCA;
     System.out.println("Conta poupança criada com sucesso!");
     
     
     }
 
+    /**
+     * Método para realizar o saque na conta poupança.
+     * Sobrescreve o método sacar da classe Conta porque a conta poupança não adimite pessoa jurídica.
+     * @param valor
+     * @throws IllegalArgumentException se o valor for maior que o saldo da conta
+     */
     @Override
     public void sacar(BigDecimal valor) {
         if(valor.compareTo(super.saldo) > 0) {
@@ -33,33 +62,32 @@ public class ContaPoupanca extends Conta {
         
     }
 
-    @Override
-    public void depositar(BigDecimal valor) {
-        super.saldo.add(valor);
-        
-    }
-
-    @Override
-    public void transferir(BigDecimal valor, Conta conta) {
-        if(valor.compareTo(super.saldo) > 0){
-            throw new IllegalArgumentException("Saldo insuficiente");
-        }
-
-        this.sacar(valor);
-        conta.depositar(valor);
-        
-        
-    }
-
-    public void atualizarAniversario(LocalDate aniversarioConta) {
+    
+    /**
+     * Atualiza o aniversario da conta poupança
+     * @param aniversarioConta
+     *
+     */
+    
+    private void atualizarAniversario(LocalDate aniversarioConta) {
         this.aniversarioConta = aniversarioConta;
     }
 
+    /**
+     * Método que realiza o rendimento da conta poupança
+     * Atualiza o saldo da conta poupança com a taxa de rendimento mensal.
+     * @param dataAtual
+     * @throws IllegalArgumentException se a data for maior que a data de aniversario da conta
+     *
+     */
+
     public void atualizaRendimento(LocalDate dataAtual){
-        //calular o rendimento quando a data atual for um mes depois do aniversario da conta
-        if(ChronoUnit.MONTHS.between(aniversarioConta, dataAtual) == 1){
-            super.saldo.add(super.saldo.multiply(rendimento.divide(new BigDecimal(100)).add(new BigDecimal(1))));
-            this.atualizarAniversario(aniversarioConta.plusMonths(1));
+        if(ChronoUnit.DAYS.between(aniversarioConta, dataAtual) < 0) {
+            throw new IllegalArgumentException("Data inválida");
+        }
+        if(ChronoUnit.MONTHS.between(aniversarioConta, dataAtual) >= 1){
+            super.saldo.add(super.saldo.multiply(taxaRendimento.divide(new BigDecimal(100)).add(new BigDecimal(1))).multiply(new BigDecimal(ChronoUnit.MONTHS.between(aniversarioConta, dataAtual))));
+            this.atualizarAniversario(dataAtual);
         }
     }
 
