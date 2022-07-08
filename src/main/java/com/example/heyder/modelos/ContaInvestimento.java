@@ -35,9 +35,9 @@ public class ContaInvestimento extends Conta {
      * @param numero
      * @param agencia
      * @param cliente
-     * @param saldoInvestimento
+     * 
      */
-    public ContaInvestimento(String numero, String agencia, Cliente cliente, BigDecimal saldoInvestimento) {
+    public ContaInvestimento(String numero, String agencia, Cliente cliente) {
         super(numero, agencia, cliente);
         this.dataInicial = LocalDate.now();
         this.rendimento = new BigDecimal(0);
