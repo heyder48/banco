@@ -20,6 +20,8 @@ public class ClientePJ extends Cliente {
         this.nomeFantasia = nomeFantasia;
         this.titular = titular;
 
+        System.out.println("Cliente cadastrado com sucesso!");
+
     }
     
 

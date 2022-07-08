@@ -9,6 +9,7 @@ public abstract class Conta {
     protected String agencia;
     protected BigDecimal saldo;
     protected Cliente cliente;
+    protected TipoDeConta tipo;
 
     public Conta(String numero, String agencia, Cliente cliente) {
         this.numero = numero;
