@@ -1,5 +1,6 @@
 package com.example.heyder;
 
+import java.math.BigDecimal;
 import java.util.Scanner;
 
 import com.example.heyder.modelos.CNPJ;
@@ -7,11 +8,14 @@ import com.example.heyder.modelos.CPF;
 import com.example.heyder.modelos.Cliente;
 import com.example.heyder.modelos.ClientePF;
 import com.example.heyder.modelos.ClientePJ;
+import com.example.heyder.modelos.Conta;
 import com.example.heyder.modelos.ContaCorrente;
+import com.example.heyder.modelos.ContaInvestimento;
 import com.example.heyder.modelos.ContaPoupanca;
 import com.example.heyder.modelos.Email;
 import com.example.heyder.modelos.Endereco;
 import com.example.heyder.modelos.Telefone;
+import com.example.heyder.modelos.TipoDeConta;
 import com.example.heyder.modelos.TipoDePessoa;
 import com.example.heyder.modelos.Titular;
 
@@ -147,41 +151,77 @@ public class App
        
     }
 
-    public static ContaCorrente cadastrarCC(Cliente cliente) {
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Digite o número da conta:");
-        String numero = scanner.nextLine();
-        System.out.println("Digite a agência:");
-        String agencia = scanner.nextLine();
+    public static ContaCorrente cadastrarCC(Cliente cliente, String numero, String agencia) {
+        
 
         try {
             ContaCorrente contaCorrente = new ContaCorrente(agencia, numero, cliente);
             return contaCorrente;
         } catch (Exception e) {
             System.out.println("Erro ao cadastrar conta: " + e.getMessage());
-        }finally {
-            scanner.close();
         }
         return null;
     }
 
-    public static ContaPoupanca cadastrarCP(Cliente cliente) {
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Digite o número da conta:");
-        String numero = scanner.nextLine();
-        System.out.println("Digite a agência:");
-        String agencia = scanner.nextLine();
+    public static ContaPoupanca cadastrarCP(Cliente cliente, String numero, String agencia) {
+        
 
         try {
             ContaPoupanca contaPoupanca = new ContaPoupanca(agencia, numero, cliente);
             return contaPoupanca;
         } catch (Exception e) {
             System.out.println("Erro ao cadastrar conta: " + e.getMessage());
-        }finally{
-            scanner.close();
+        }
+
+        return null;
+    }
+
+    public static ContaInvestimento cadastrarCI(Cliente cliente, String numero, String agencia) {
+        
+
+        try {
+            ContaInvestimento contaInvestimento = new ContaInvestimento(agencia, numero, cliente);
+            return contaInvestimento;
+        } catch (Exception e) {
+            System.out.println("Erro ao cadastrar conta: " + e.getMessage());
         }
         return null;
     }
 
+    public static Conta criarConta(Cliente cliente, TipoDeConta tipoDeConta) {
 
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Digite o número da conta:");
+        String numero = scanner.nextLine();
+        System.out.println("Digite a agência:");
+        String agencia = scanner.nextLine();
+
+        scanner.close();
+
+        switch(tipoDeConta){
+            case CORRENTE:
+                return cadastrarCC(cliente, numero, agencia);
+            case POUPANCA:
+                return cadastrarCP(cliente, numero, agencia);
+            case INVESTIMENTO:
+                return cadastrarCI(cliente, numero, agencia);
+                
+            default:
+                System.out.println("Tipo de conta inválida");
+                return null;
+                
+        }
+
+
+
+    }
+
+    public static void sacar(Conta conta, BigDecimal valor ){
+
+        try {
+            conta.sacar(valor);
+        } catch (Exception e) {
+            System.out.println("Erro ao sacar: " + e.getMessage());
+        }
+    }
 }
