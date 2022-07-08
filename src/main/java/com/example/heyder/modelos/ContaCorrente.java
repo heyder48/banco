@@ -8,7 +8,8 @@ public class ContaCorrente extends Conta {
 
     public ContaCorrente(String numero, String agencia, Cliente cliente) {
         super(numero, agencia, cliente);
-        //TODO Auto-generated constructor stub
+        super.tipo = TipoDeConta.CORRENTE;
+        System.out.println("Conta corrente criada com sucesso!");
     }
 
     @Override

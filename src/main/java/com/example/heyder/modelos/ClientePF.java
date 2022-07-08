@@ -22,7 +22,7 @@ public class ClientePF extends Cliente {
         this.nome = nome;
         this.cpf = cpf;
         
-        //TODO Auto-generated constructor stub
+        System.out.println("Cliente cadastrado com sucesso!");
     }
 
     @Override

@@ -13,15 +13,15 @@ public class ContaPoupanca extends Conta {
         super(numero, agencia, cliente);
         if(cliente.tipoDePessoa == TipoDePessoa.JURIDICA){
             throw new IllegalArgumentException("Conta poupança não pode ser para pessoa jurídica");
-    }
+        }
 
     this.aniversarioConta = LocalDate.now();
     this.rendimento = new BigDecimal(0);
+    super.tipo = TipoDeConta.POUPANCA;
+    System.out.println("Conta poupança criada com sucesso!");
     
-
     
-    
-}
+    }
 
     @Override
     public void sacar(BigDecimal valor) {

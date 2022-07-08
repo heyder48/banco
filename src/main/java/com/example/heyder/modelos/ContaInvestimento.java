@@ -16,6 +16,8 @@ public class ContaInvestimento extends Conta {
         super(numero, agencia, cliente);
         this.dataInicial = LocalDate.now();
         this.rendimento = new BigDecimal(0);
+        super.tipo = TipoDeConta.INVESTIMENTO;
+        System.out.println("Conta investimento criada com sucesso!");
         
     }
 
