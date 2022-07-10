@@ -16,6 +16,7 @@ public abstract class Cliente {
     
     protected TipoDePessoa tipoDePessoa;
     protected Endereco endereco;
+    protected List<Conta> contas = new ArrayList<>();
 
     public Cliente(Email email,  TipoDePessoa tipoDePessoa, Endereco endereco) {
         this.email = email;
@@ -48,6 +49,14 @@ public abstract class Cliente {
      */
     public TipoDePessoa getTipoDePessoa(){
         return tipoDePessoa;
+    }
+
+    public void addContas(Conta conta){
+        contas.add(conta);
+    }
+
+    public List<Conta> getContas(){
+        return contas;
     }
         
     

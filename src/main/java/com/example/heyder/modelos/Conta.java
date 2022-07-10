@@ -10,10 +10,17 @@ import java.math.RoundingMode;
 public abstract class Conta {
 
     protected String numero;
+    
     protected String agencia;
+    
+
     protected BigDecimal saldo;
     protected Cliente cliente;
     protected TipoDeConta tipo;
+
+    public TipoDeConta getTipo() {
+        return tipo;
+    }
 
     public Conta(String numero, String agencia, Cliente cliente) {
         this.numero = numero;
@@ -69,5 +76,22 @@ public abstract class Conta {
     }
     public BigDecimal getSaldo() {
         return saldo.setScale(2, RoundingMode.HALF_UP);
+    }
+
+    public String getNumero() {
+        return numero;
+    }
+
+    public String getAgencia() {
+        return agencia;
+    }
+
+    @Override
+    public String toString() {
+        return "Conta{" +
+                "numero='" + numero + '\'' +
+                ", agencia='" + agencia + '\'' +
+                ", Tipo de Conta= " + tipo.name().substring(0,1).toUpperCase()+ tipo.name().substring(1).toLowerCase() +                    
+                '}';
     }
 }
