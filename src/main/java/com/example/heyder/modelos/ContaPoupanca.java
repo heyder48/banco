@@ -24,6 +24,10 @@ public class ContaPoupanca extends Conta {
      */
     private LocalDate aniversarioConta;
 
+    private BigDecimal rendimento;
+
+    
+
     /**
      * Construtor da classe ContaPoupanca
      * @param numero
@@ -39,7 +43,7 @@ public class ContaPoupanca extends Conta {
         }
 
     this.aniversarioConta = LocalDate.now();
-    
+    rendimento = BigDecimal.ZERO;
     super.tipo = TipoDeConta.POUPANCA;
     System.out.println("Conta poupança criada com sucesso!");
     
@@ -73,6 +77,14 @@ public class ContaPoupanca extends Conta {
         this.aniversarioConta = aniversarioConta;
     }
 
+    
+    /** 
+     * @return BigDecimal
+     */
+    public BigDecimal getRendimento() {
+        return rendimento;
+    }
+
     /**
      * Método que realiza o rendimento da conta poupança
      * Atualiza o saldo da conta poupança com a taxa de rendimento mensal.
@@ -86,6 +98,7 @@ public class ContaPoupanca extends Conta {
             throw new IllegalArgumentException("Data inválida");
         }
         if(ChronoUnit.MONTHS.between(aniversarioConta, dataAtual) >= 1){
+            rendimento = super.saldo.multiply(taxaRendimento.divide(new BigDecimal(100)).add(new BigDecimal(1))).multiply(new BigDecimal(ChronoUnit.MONTHS.between(aniversarioConta, dataAtual)));
             super.saldo.add(super.saldo.multiply(taxaRendimento.divide(new BigDecimal(100)).add(new BigDecimal(1))).multiply(new BigDecimal(ChronoUnit.MONTHS.between(aniversarioConta, dataAtual))));
             this.atualizarAniversario(dataAtual);
         }
