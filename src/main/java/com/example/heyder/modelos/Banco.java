@@ -34,13 +34,13 @@ public class Banco {
     public Cliente buscaCliente(String cpfCnpj,TipoDePessoa tipoDePessoa) {
         if(tipoDePessoa == TipoDePessoa.FISICA){
             for (Cliente cliente : clientes){
-                if(cliente instanceof ClientePF && ((ClientePF)cliente).getCpf().equals(cpfCnpj)){
+                if(cliente instanceof ClientePF && ((ClientePF)cliente).getCpf().getNumero().equals(cpfCnpj)){
                     return cliente;
                 }
             }
         }else if(tipoDePessoa == TipoDePessoa.JURIDICA){
             for (Cliente cliente : clientes){
-                if(cliente instanceof ClientePJ && ((ClientePJ)cliente).getCnpj().equals(cpfCnpj)){
+                if(cliente instanceof ClientePJ && ((ClientePJ)cliente).getCnpj().getNumero().equals(cpfCnpj)){
                     return cliente;
                 }
             }

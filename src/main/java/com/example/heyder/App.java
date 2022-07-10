@@ -291,7 +291,7 @@ public class App
 
     private static void transferir(Cliente cliente, BigDecimal valorTransferencia, Banco banco) {
 
-        Scanner scanner = new Scanner(System.in);
+        
         System.out.println("Qual o número da conta que deseja transferir?");
         String numeroConta = scanner.next();
         Conta conta = banco.buscaConta(numeroConta);
