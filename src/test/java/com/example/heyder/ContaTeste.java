@@ -173,13 +173,20 @@ public class ContaTeste {
         assertEquals(new BigDecimal("1002.65"), contaInvestimento.getSaldo());
     }
 
+    /**
+     * Testes de conta investimento para PJ
+     *
+     */
     @Test
     void atualizaRendimentosContaInvestimentoPJ(){
         contaInvestimentoPJ.depositar(new BigDecimal("1000"));
         ((ContaInvestimento) contaInvestimentoPJ).atualizaRendimento(LocalDate.now().plusMonths(2));
         assertEquals(new BigDecimal("1004.73"), contaInvestimentoPJ.getSaldo());
     }
-
+    /**
+     * Testes de conta poupanca
+     *
+     */
     @Test
     void atualizaRendimentosContaPoupancao(){
         contaPoupanca.depositar(new BigDecimal("1000"));

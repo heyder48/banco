@@ -1,14 +1,23 @@
 package com.example.heyder.modelos;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Banco {
 
-    private List<Conta> contas;
-    private List<Cliente> clientes;
+    private List<Conta> contas = new ArrayList<>();
+    
+
+    private List<Cliente> clientes = new ArrayList<>();
 
 
-    //adicionar clientes
+    public List<Conta> getContas() {
+        return contas;
+    }
+
+    public List<Cliente> getClientes() {
+        return clientes;
+    }
 
     public void addClientes(Cliente cliente){
         clientes.add(cliente);
