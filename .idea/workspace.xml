@@ -6,9 +6,27 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cd80f179-d511-4718-acc7-49ab988d5c79" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.vscode/settings.json" beforeDir="false" afterPath="$PROJECT_DIR$/.vscode/settings.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/example/heyder/AppTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/heyder/App.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/heyder/App.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/heyder/modelos/Banco.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/heyder/modelos/Banco.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/heyder/modelos/CNPJ.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/heyder/modelos/CNPJ.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/heyder/modelos/CPF.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/heyder/modelos/CPF.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/heyder/modelos/Cliente.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/heyder/modelos/Cliente.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/heyder/modelos/ClientePF.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/heyder/modelos/ClientePF.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/heyder/modelos/ClientePJ.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/heyder/modelos/ClientePJ.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/heyder/modelos/Conta.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/heyder/modelos/Conta.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/heyder/modelos/ContaCorrente.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/heyder/modelos/ContaCorrente.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/heyder/modelos/ContaInvestimento.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/heyder/modelos/ContaInvestimento.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/heyder/modelos/ContaPoupanca.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/heyder/modelos/ContaPoupanca.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/heyder/modelos/Email.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/heyder/modelos/Email.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/heyder/modelos/Endereco.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/heyder/modelos/Endereco.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/heyder/modelos/Telefone.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/heyder/modelos/Telefone.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/heyder/modelos/TipoDeConta.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/heyder/modelos/TipoDeConta.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/heyder/modelos/TipoDePessoa.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/heyder/modelos/TipoDePessoa.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/heyder/modelos/Titular.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/heyder/modelos/Titular.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/example/heyder/AppTest.class" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -22,8 +40,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/example/heyder/modelos/Cliente.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="58">
-              <caret line="14" column="59" lean-forward="true" selection-start-line="14" selection-start-column="59" selection-end-line="14" selection-end-column="59" />
+            <state relative-caret-position="-146">
+              <caret line="14" column="59" selection-start-line="14" selection-start-column="59" selection-end-line="14" selection-end-column="59" />
             </state>
           </provider>
         </entry>
@@ -85,7 +103,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -128,16 +146,37 @@
               <item name="heyder" type="462c0819:PsiDirectoryNode" />
               <item name="modelos" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="banco" type="b2602c69:ProjectViewProjectNode" />
+              <item name="banco" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="banco" type="b2602c69:ProjectViewProjectNode" />
+              <item name="banco" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="banco" type="b2602c69:ProjectViewProjectNode" />
+              <item name="banco" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="heyder" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1657064094833" />
-    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="settings.editor.selected.configurable" value="reference.projectsettings.compiler.javacompiler" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -167,7 +206,7 @@
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1295" height="695" extended-state="6" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.21133603" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2145749" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -197,13 +236,6 @@
     </layout>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/heyder/modelos/Cliente.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="58">
-          <caret line="14" column="59" lean-forward="true" selection-start-line="14" selection-start-column="59" selection-end-line="14" selection-end-column="59" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/example/heyder/modelos/ClientePF.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="221">
@@ -222,6 +254,20 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="374">
           <caret line="22" column="32" selection-start-line="22" selection-start-column="32" selection-end-line="22" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/example/heyder/CPFTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="19" column="1" lean-forward="true" selection-start-line="19" selection-start-column="1" selection-end-line="19" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/heyder/modelos/Cliente.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-146">
+          <caret line="14" column="59" selection-start-line="14" selection-start-column="59" selection-end-line="14" selection-end-column="59" />
         </state>
       </provider>
     </entry>

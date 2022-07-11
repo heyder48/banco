@@ -30,6 +30,8 @@ public class ContaInvestimento extends Conta {
      */
     private LocalDate dataInicial;
 
+    private BigDecimal saldo;
+
     /**
      * Construtor da classe ContaInvestimento
      * @param numero
@@ -41,16 +43,32 @@ public class ContaInvestimento extends Conta {
         super(numero, agencia, cliente);
         this.dataInicial = LocalDate.now();
         this.rendimento = new BigDecimal(0);
+        this.saldo = BigDecimal.ZERO;
         super.tipo = TipoDeConta.INVESTIMENTO;
         System.out.println("Conta investimento criada com sucesso!");
         
+    }
+
+    @Override
+    public void depositar(BigDecimal valor) {
+        if(valor.compareTo(BigDecimal.ZERO) <= 0){
+            throw new IllegalArgumentException("Valor inválido");
+        }
+        
+        this.saldo = this.saldo.add(valor);
+    }
+
+    @Override
+    public BigDecimal getSaldo() {
+        return this.saldo.setScale(2, RoundingMode.HALF_EVEN);
     }
 
     /**
      * Método para consultar o rendimento da conta
      * @return rendimento
      */
-      
+    
+    
     public BigDecimal getRendimento() {
         return rendimento.setScale(2,RoundingMode.HALF_UP);
     }
@@ -75,17 +93,17 @@ public class ContaInvestimento extends Conta {
 
         Long tempo = ChronoUnit.DAYS.between(dataInicial, dataAtual);
 
-        BigDecimal taxaDiaria = new BigDecimal(0);
+        double taxaDiaria = BigDecimal.ZERO.doubleValue();
 
         if(cliente.tipoDePessoa == TipoDePessoa.JURIDICA){
-            taxaDiaria = taxaAnualParaDiaria(taxa.add(new BigDecimal(2)));
+            taxaDiaria = taxaAnualParaDiaria(taxa.add(new BigDecimal(2)),tempo);
         }else{
-            taxaDiaria = taxaAnualParaDiaria(taxa);
+            taxaDiaria = taxaAnualParaDiaria(taxa,tempo);
         }
 
         //Juros compostos
-        rendimento = new BigDecimal(Math.pow(1 + taxaDiaria.divide(new BigDecimal(100)).doubleValue(), tempo.doubleValue()) * saldo.doubleValue()).subtract(saldo);
-        saldo = new BigDecimal(Math.pow(1 + taxaDiaria.divide(new BigDecimal(100)).doubleValue(), tempo.doubleValue()) * saldo.doubleValue());
+        this.rendimento = new BigDecimal(Math.pow((1 + taxaDiaria/100), tempo.doubleValue()) * this.saldo.doubleValue()).subtract(this.saldo);
+        this.saldo = new BigDecimal(Math.pow((1 + taxaDiaria/100), tempo.doubleValue()) * this.saldo.doubleValue());
 
         dataInicial = dataAtual;
 
@@ -99,9 +117,13 @@ public class ContaInvestimento extends Conta {
      *
      */
 
-    private BigDecimal taxaAnualParaDiaria(BigDecimal taxaAnual){
+    private Double taxaAnualParaDiaria(BigDecimal taxaAnual, Long tempo){
 
-        return  new BigDecimal(Math.pow(1+taxaAnual.doubleValue(), 1/365)-1);
+        double taxaAnulaD = taxaAnual.doubleValue();
+
+        double taxaDiaria = Math.pow(1+taxaAnulaD/100, (double)tempo/360.00);
+
+        return  taxaDiaria-1;
     }
     
 }

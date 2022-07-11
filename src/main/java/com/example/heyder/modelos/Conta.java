@@ -23,9 +23,18 @@ public abstract class Conta {
     }
 
     public Conta(String numero, String agencia, Cliente cliente) {
+        if(numero == null || numero.isEmpty()){
+            throw new IllegalArgumentException("Numero da conta não pode ser nulo ou vazio");
+        }
+        if(agencia == null || agencia.isEmpty()){
+            throw new IllegalArgumentException("Agencia da conta não pode ser nula ou vazia");
+        }
+        if(cliente == null){
+            throw new IllegalArgumentException("Cliente da conta não pode ser nulo");
+        }
         this.numero = numero;
         this.agencia = agencia;
-        this.saldo = new BigDecimal(0).setScale(2,RoundingMode.HALF_EVEN);
+        this.saldo = BigDecimal.ZERO;
         this.cliente = cliente;
     }
 
@@ -38,6 +47,9 @@ public abstract class Conta {
      *
      */
     public void sacar(BigDecimal valor){
+        if(valor.compareTo(BigDecimal.ZERO) <= 0){
+            throw new IllegalArgumentException("Valor do saque não pode ser menor ou igual a zero");
+        }
         if(valor.compareTo(saldo) > 0) {
             throw new IllegalArgumentException("Saldo insuficiente");
         }
@@ -55,6 +67,10 @@ public abstract class Conta {
     };
 
     public  void depositar(BigDecimal valor){
+        if(valor.compareTo(BigDecimal.ZERO) <= 0){
+            throw new IllegalArgumentException("Valor do deposito não pode ser menor ou igual a zero");
+        }
+        
         saldo.add(valor);
     };
 
@@ -70,6 +86,12 @@ public abstract class Conta {
     public void transferir(BigDecimal valor, Conta conta){
         if (valor.compareTo(saldo) > 0) {
             throw new IllegalArgumentException("Saldo insuficiente");
+        }
+        if(valor.compareTo(BigDecimal.ZERO) <= 0){
+            throw new IllegalArgumentException("Valor da transferencia não pode ser menor ou igual a zero");
+        }
+        if(conta == null){
+            throw new IllegalArgumentException("Conta de destino não pode ser nula");
         }
         this.sacar(valor);
         conta.depositar(valor);

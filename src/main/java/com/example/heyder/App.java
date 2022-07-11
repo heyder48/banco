@@ -55,9 +55,14 @@ public class App
 
         switch (scanner.nextInt()) {
             case 1:
+                System.out.println("Casdastrando Pessoa Física");
+                scanner.nextLine();
                 cliente =  cadastrarPessoaFisica(banco);
                 break;
             case 2:
+                System.out.println("Casdastrando Pessoa Jurídica");
+
+                scanner.nextLine();
                 cliente = cadastrarPessoaJuridica(banco);
                 break;
         
@@ -348,7 +353,7 @@ public class App
 
     public static ClientePF cadastrarPessoaFisica(Banco banco) {
         
-
+        System.out.println("Cadastro de cliente pessoa física\n\n");
         
         System.out.println("Digite o nome do cliente:");
         String nome = scanner.nextLine();
@@ -382,6 +387,7 @@ public class App
             
         } catch (Exception e) {
             System.out.println("Erro ao cadastrar cliente: " + e.getMessage());
+            System.exit(0);
         }
 
         return null;
@@ -429,6 +435,7 @@ public class App
             return clientePJ;
          }catch (Exception e) {
             System.out.println("Erro ao cadastrar cliente: " + e.getMessage());
+            System.exit(0);
         }
 
         return null;
