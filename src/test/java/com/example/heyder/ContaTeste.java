@@ -11,7 +11,6 @@ import org.junit.jupiter.api.Test;
 
 import com.example.heyder.modelos.CNPJ;
 import com.example.heyder.modelos.CPF;
-import com.example.heyder.modelos.Cliente;
 import com.example.heyder.modelos.ClientePF;
 import com.example.heyder.modelos.ClientePJ;
 import com.example.heyder.modelos.Conta;
@@ -31,6 +30,8 @@ public class ContaTeste {
     private Conta contaCorrentePJ;
     private Conta contaPoupanca;
     private Conta contaInvestimento;
+    private Conta contaInvestimentoPJ;
+
     @BeforeEach
     public void setUp() {
        this.contaCorrentePF = new ContaCorrente("12345-6",
@@ -66,6 +67,16 @@ public class ContaTeste {
                                                             new Email("teste@teste"),
                                                             TipoDePessoa.FISICA,
                                                             new Endereco("Rua", "123",null, "Bairro", "Cidade", "Estado", "CEP")));
+        
+        this.contaInvestimentoPJ = new ContaInvestimento("12345-6",
+                                                        "12345-6", 
+                                                        new ClientePJ(new Email("teste@teste.com"),
+                                                        TipoDePessoa.JURIDICA,
+                                                        new Endereco("Rua", "123",null, "Bairro", "Cidade", "Estado", "CEP"),
+                                                        new CNPJ("12345678911011"),
+                                                        "Razão Social",
+                                                        "Nome Fantasia",
+                                                        new Titular("Cleber", new Email("cleber@teste.com"), new CPF("12345678901"))));
 
 
     }
@@ -156,11 +167,27 @@ public class ContaTeste {
     //Testes de investimento (conta investimento)
 
     @Test
-    void atualizaRendimentos(){
+    void atualizaRendimentosContaInvestimento(){
         contaInvestimento.depositar(new BigDecimal("1000"));
         ((ContaInvestimento) contaInvestimento).atualizaRendimento(LocalDate.now().plusMonths(2));
         assertEquals(new BigDecimal("1002.65"), contaInvestimento.getSaldo());
     }
+
+    @Test
+    void atualizaRendimentosContaInvestimentoPJ(){
+        contaInvestimentoPJ.depositar(new BigDecimal("1000"));
+        ((ContaInvestimento) contaInvestimentoPJ).atualizaRendimento(LocalDate.now().plusMonths(2));
+        assertEquals(new BigDecimal("1004.73"), contaInvestimentoPJ.getSaldo());
+    }
+
+    @Test
+    void atualizaRendimentosContaPoupancao(){
+        contaPoupanca.depositar(new BigDecimal("1000"));
+        ((ContaPoupanca) contaPoupanca).atualizaRendimento(LocalDate.now().plusMonths(5));
+        assertEquals(new BigDecimal("1025.00"), contaPoupanca.getSaldo());
+    }
+
+
 
 
 

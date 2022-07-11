@@ -1,6 +1,7 @@
 package com.example.heyder.modelos;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 
@@ -26,6 +27,8 @@ public class ContaPoupanca extends Conta {
 
     private BigDecimal rendimento;
 
+    private BigDecimal saldo;
+
     
 
     /**
@@ -45,6 +48,8 @@ public class ContaPoupanca extends Conta {
     this.aniversarioConta = LocalDate.now();
     rendimento = BigDecimal.ZERO;
     super.tipo = TipoDeConta.POUPANCA;
+    this.saldo = BigDecimal.ZERO;
+    
     System.out.println("Conta poupança criada com sucesso!");
     
     
@@ -58,12 +63,26 @@ public class ContaPoupanca extends Conta {
      */
     @Override
     public void sacar(BigDecimal valor) {
-        if(valor.compareTo(super.saldo) > 0) {
+        if(valor.compareTo(this.saldo) > 0) {
             throw new IllegalArgumentException("Saldo insuficiente");
         }
 
-        super.saldo.subtract(valor);
+        this.saldo.subtract(valor);
         
+    }
+
+    @Override
+    public BigDecimal getSaldo() {
+        return this.saldo.setScale(2, RoundingMode.HALF_UP);
+    }
+
+    @Override
+    public void depositar(BigDecimal valor) {
+        if(valor.compareTo(BigDecimal.ZERO) <= 0){
+            throw new IllegalArgumentException("Valor inválido");
+        }
+        
+        this.saldo = this.saldo.add(valor);
     }
 
     
@@ -98,8 +117,8 @@ public class ContaPoupanca extends Conta {
             throw new IllegalArgumentException("Data inválida");
         }
         if(ChronoUnit.MONTHS.between(aniversarioConta, dataAtual) >= 1){
-            rendimento = super.saldo.multiply(taxaRendimento.divide(new BigDecimal(100)).add(new BigDecimal(1))).multiply(new BigDecimal(ChronoUnit.MONTHS.between(aniversarioConta, dataAtual)));
-            super.saldo.add(super.saldo.multiply(taxaRendimento.divide(new BigDecimal(100)).add(new BigDecimal(1))).multiply(new BigDecimal(ChronoUnit.MONTHS.between(aniversarioConta, dataAtual))));
+            this.rendimento = this.saldo.multiply(taxaRendimento.divide(new BigDecimal(100))).multiply(new BigDecimal(ChronoUnit.MONTHS.between(aniversarioConta, dataAtual)));
+            this.saldo = this.saldo.add(this.rendimento);
             this.atualizarAniversario(dataAtual);
         }
     }
