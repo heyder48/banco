@@ -35,6 +35,7 @@ import com.example.heyder.modelos.Titular;
 
 public class App 
 {
+    //Cria um objeto Scanner para ler os dados do usuário.
     private final static Scanner scanner = new Scanner(System.in);
     public static void main( String[] args )
     {
@@ -49,10 +50,12 @@ public class App
         System.out.println("1 - Pessoa Física");
         System.out.println("2 - Pessoa Jurídica");
         
-
+        //Instancia um objeto do tipo Cliente vazio
         Cliente cliente = null;
+        //Instancia um objeto Banco para armazenar os dados do banco como Clientes e contas.
         Banco banco = new Banco();
 
+        //inicia o cadastro de um cliente
         switch (scanner.nextInt()) {
             case 1:
                 System.out.println("Casdastrando Pessoa Física");
@@ -71,9 +74,20 @@ public class App
                 break;
         }
 
+        //Com o cliente cadastrado as opções devem ser exibidas.
+        //inicia-se um looq
         while(true){
 
             //lista operações disponíveis
+            //Opção 1 - Cadastrar conta
+            //Opção 2 - Depositar
+            //Opção 3 - Sacar
+            //Opção 4 - Transferir
+            //Opção 5 - Listar contas
+            //Opção 6 - Verifica o saldo de uma conta
+            //Opção 7 - Entra nas opções de investimento
+            //Opção 8 - Sair do programa
+
             System.out.println("\n\n\n");
             System.out.println("Vamos começar a realizar uma operação?");
             System.out.println("\n\n\n");
@@ -86,6 +100,7 @@ public class App
             System.out.println("7 - Investimentos");
             System.out.println("8 - Sair");
 
+            //lê a opção do usuário
             int opcao = scanner.nextInt();
 
             switch (opcao) {
@@ -93,6 +108,7 @@ public class App
                     System.out.println("Qual o tipo de conta que deseja criar?");
                     
                     TipoDeConta tipo = null;
+                    //Se o cliente é pessoa física, todas os tipos de contas são disponíveis.
                     if(cliente instanceof ClientePF){
                         System.out.println("1 - Conta Corrente");
                         System.out.println("2 - Conta Poupança");
@@ -112,7 +128,9 @@ public class App
                                 System.out.println("Opção inválida");
                                 break;
                         }
+
                     }else if(cliente instanceof ClientePJ){
+                        //Se o cliente é pessoa jurídica, apenas as contas corrente e de investimento estão disponíveis.
                         System.out.println("1 - Conta Corrente");
                         System.out.println("2 - Conta Investimento");
                         
@@ -169,7 +187,15 @@ public class App
         }
 
     }
-
+    /**
+     * Método que abre as opções de investimentos.
+     * Utiliza os métodos criados nas classes de conta investimento e conta poupança.
+     * Caso o cliente possua as duas é possí escolher entre os dois tipos de investimento.
+     * @param cliente
+     * @see ContaInvestimento
+     * @see ContaPoupanca
+     *
+     */
     private static void investimentos(Cliente cliente) {
 
         Conta selecionada = null;
@@ -238,7 +264,7 @@ public class App
 
         }
         }
-
+        //Com a conta selecionada, abre as opções de investimentos.
         System.out.println("Deseja:");
         System.out.println("1 - Aplicar");
         System.out.println("2 - Resgatar");
@@ -246,6 +272,7 @@ public class App
         System.out.println("4 - Voltar");
 
         int opcao = scanner.nextInt();
+        scanner.nextLine();
 
         switch (opcao) {
             case 1:
@@ -283,7 +310,11 @@ public class App
 
         
     }
-
+    /**
+     * Método para verificar o saldo de uma conta.
+     * Permite a seleção de uma conta.
+     * @param cliente
+     */
     private static void saldo(Cliente cliente) {
 
         System.out.println("De qual conta deseja ver o saldo?");
@@ -293,7 +324,16 @@ public class App
         Conta contaSelecionada = cliente.getContas().get(conta-1);
         System.out.println("O saldo da conta é: R$ " + contaSelecionada.getSaldo());
     }
-
+    /**
+     * Método para realizar transferências entre contas.
+     * Permite a seleção de duas contas.De qual conta deseja transferir e qual conta receberá o valor.
+     * @param cliente
+     * @param valorTransferencia
+     * @param banco
+     * @see Conta
+     * @see Banco
+     *
+     */
     private static void transferir(Cliente cliente, BigDecimal valorTransferencia, Banco banco) {
 
         
@@ -319,7 +359,10 @@ public class App
         }
 
     }
-
+    /**
+     * Método para depositar em uma conta.
+     * @param cliente
+     */
     private static void depositar(Cliente cliente, BigDecimal valor) {
         
         System.out.println("Qual a conta que deseja depositar?");
